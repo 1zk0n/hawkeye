@@ -31,3 +31,12 @@ It can do:
  
  ```hawkeye.sh -e target.com``` this option does port scanning and uses nuclei to check for vulnerabilities
  
+ # Tools used
+ - assetfinder
+ - whois utility 
+ - wafw00f
+ - httpx
+ - subjack
+ - aquatone
+ - nmap
+ - nuclei
