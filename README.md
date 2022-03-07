@@ -33,6 +33,7 @@ It can do:
  
  # Tools used
  - assetfinder
+ - subby
  - whois utility 
  - wafw00f
  - httpx
