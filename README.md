@@ -1,5 +1,5 @@
 # Hawkeye
-Hawkeye is a recon automation tool that can help a lot in bug bounty huting. I created this tool basically to automate my recon methodology which i have been using for a while now. It takes off the stress of using each tool individually and storing and sorting all of the outputs. This tool takes care of all that for me by making separate directories for each target bearing the target name 
+Hawkeye is a recon automation tool that can help in bug bounty huting. I created this tool basically to automate my recon methodology which i have been using for a while now. It takes off the stress of using each tool individually and storing and sorting all of the outputs. This tool takes care of all that for me by making separate directories for each target bearing the target name 
 
 # Features
 It can do: 
