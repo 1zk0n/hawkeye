@@ -19,15 +19,15 @@ It can do:
  
  # Usage
  Hawkeye comes with a bunch of options from quick recon to in-depth scanning 
+ You can also use this tool from any shell by adding it to your environemt varible by using this command ```export PATH=$PATH:/path/to/hawkeye``` after which you can use it simply as ```hawkeye.sh -p target.com```
  
- ```hawkeye.sh -p``` this is for quick recon i.e. it scans for subs, checks for alive ones, and does domain flyby. This gets you enough information to get started on a target for bug bounty hunting. This scan usually takes around 7-10 minutes to complete
+ ```hawkeye.sh -p target.com``` this is for quick recon i.e. it scans for subs, checks for alive ones, and does domain flyby. This gets you enough information to get started on a target for bug bounty hunting. This scan usually takes around 7-10 minutes to complete
  
  ```hawkeye.sh -h``` to toggle help screen
  
- ```hawkeye.sh -w``` this option gives you the whois and web app firewall info about the target
+ ```hawkeye.sh -w target.com``` this option gives you the whois and web app firewall info about the target
  
- ```hawkeye.sh -a``` this is the in-depth option which performs all the things mentioned in the features section
+ ```hawkeye.sh -a target.com``` this is the in-depth option which performs all the things mentioned in the features section
  
- ```hawkeye.sh -e``` this option does port scanning and uses nuclei to check for vulnerabilities
- 
+ ```hawkeye.sh -e target.com``` this option does port scanning and uses nuclei to check for vulnerabilities
  
