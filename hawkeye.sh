@@ -231,10 +231,10 @@ function webscan(){
 banner
 
 
-while getopts "hewgdpa" OPTION; do
+while getopts "hiwpa" OPTION; do
         case $OPTION in
-	    p)                     #quickrecon- get to know your target and its assets
-			maindir
+	    p)                     
+	    maindir
             recondir
             scandirs
             subdomaindir
@@ -245,7 +245,7 @@ while getopts "hewgdpa" OPTION; do
             livesubprobe
             domainflyby
             exit 0 
-			;;
+	    ;;
 
             a) 
                 maindir
@@ -280,21 +280,8 @@ while getopts "hewgdpa" OPTION; do
                  exit 0
                  ;;
 
-                d)
-                    maindir
-                    recondir
-                    scandirs
-                    subdomaindir 
-                    findsubs
-                    subjackdir
-                    vulnsubs
-                    exit 0
-                    ;;
 
-
-
-
-                e)
+                i)
                     maindir
                     recondir
                     scandirs    
@@ -307,31 +294,27 @@ while getopts "hewgdpa" OPTION; do
                     exit 0
                     ;;      
                  
-                g)
-                    maindir
-                    recondir
-                    scandirs
-                    subdomaindir
-                    nucleidir
-                    pythonsubs 
-                    webscan
-                    exit 0
-                    ;;                       
-
                 h)
                         echo -e "This is an automated reconnaissance tool to be used for web app pentesting \nwhich provides one with the most useful and effective data \nfor a web app vulnerability assesment or pentesting"
                         echo ""
                         echo "Usage:"
                         echo " "
-                        echo "./hawkeye.sh -h "
+                        echo "hawkeye.sh -h "
                         echo " "
-                        echo "./hawkeye.sh target.com        --to scan target domain for reconnaissance"
+                        echo  "hawkeye.sh -p target.com   --to scan target domain for quick/passive reconnaissance"
+                        printf "%101s\n" "which will gether subdmoains, check for alive ones and do a domain flyby"
                         echo " "
-                        echo "./hawkeye.sh -w target.com     --to get whois information and web app firewall data"
+                        echo "hawkeye.sh -i                -- to scan target domain for active reconnaissance,"
+                        printf "%71s\n" "which port scan and vulnerability check"
+                        echo ""
+                        echo "hawkeye.sh -w target.com     --to get whois information and web app firewall data"
                         echo ""                       
-                        echo "   -h     help (this output)"
+                        echo "hawkeye.sh -a target.com     -- to do an in-depth scan including sub enumeration, live sub check,"
+                        printf "%75s\n" "port scanning, vulnerability check and more"
+                        echo " "
+                        echo "hawkeye.sh   -h               --help (this output)"
                         exit 0
-                        ;;
+                        ;;      
 
         esac
 done
