@@ -19,7 +19,7 @@ It can do:
  
  # Usage
  Hawkeye comes with a bunch of options from quick recon to in-depth scanning 
- You can also use this tool from any shell by adding it to your environemt varible by using this command ```export PATH=$PATH:/path/to/hawkeye``` after which you can use it simply as ```hawkeye.sh -p target.com```
+ You can also use this tool from any shell by adding it to your environment variable by using this command ```export PATH=$PATH:/path/to/hawkeye``` after which you can use it simply as ```hawkeye.sh -p target.com```
  
  ```hawkeye.sh -p target.com``` this is for quick recon i.e. it scans for subs, checks for alive ones, and does domain flyby. This gets you enough information to get started on a target for bug bounty hunting. This scan usually takes around 7-10 minutes to complete
  
