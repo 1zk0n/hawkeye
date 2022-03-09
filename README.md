@@ -29,7 +29,7 @@ It can do:
  
  ```hawkeye.sh -a target.com``` this is the in-depth option which performs all the things mentioned in the features section
  
- ```hawkeye.sh -e target.com``` this option does port scanning and uses nuclei to check for vulnerabilities
+ ```hawkeye.sh -i target.com``` this option does port scanning and uses nuclei to check for vulnerabilities
  
  # Tools used
  - assetfinder
