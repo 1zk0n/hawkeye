@@ -280,7 +280,9 @@ while getopts "hiwpa" OPTION; do
                 exit 0
                 ;;
 
-                w)     
+                w)
+                 maindir
+                 recondir     
                  firewalldir      
                  whoisdir
                  getwhois
@@ -306,8 +308,6 @@ while getopts "hiwpa" OPTION; do
                         echo -e "This is an automated reconnaissance tool to be used for web app pentesting \nwhich provides one with the most useful and effective data \nfor a web app vulnerability assesment or pentesting"
                         echo ""
                         echo "Usage:"
-                        echo " "
-                        echo "hawkeye.sh -h "
                         echo " "
                         echo  "hawkeye.sh -p target.com   --to scan target domain for quick/passive reconnaissance"
                         printf "%101s\n" "which will gether subdmoains, check for alive ones and do a domain flyby"
