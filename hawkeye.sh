@@ -22,8 +22,9 @@ function banner() {
 if [ $# -eq 0 ]
 then
         echo "Missing options!"
+        echo " "
         echo "(run ./hawkeye.sh -h for help)"
-        echo ""
+        echo " "
         exit 0
 fi
 
@@ -94,12 +95,6 @@ function firewalldir() {
     fi
 }
 
-function whoisdir() {
-    if [ ! -d '$url/recon/httprobe' ];then
-    mkdir $url/recon/httprobe
-    fi
-}
-
 function finalsublist() {
     if [ ! -f "$url/recon/scans/subdomains/final.txt" ];then
 	touch $url/recon/scans/subdomains/final.txt
@@ -131,13 +126,13 @@ CYAN='\033[0;36m'
 function findsubs() {
     echo -e "${BLUE}========================================================"
     echo " "
-    echo  "[+] Harvesting subdomains with assetfinder..."
+    echo  "[+] Harvesting subdomains with subfinder..."
     echo " "
     echo "[+] The subdomain list can be found in $url/recon/scans/subdomains/"
     echo " "
     echo "========================================================"
     echo " "
-    assetfinder $url >> $url/recon/scans/subdomains/assets.txt
+    subfinder -d $url > $url/recon/scans/subdomains/assets.txt
     sort -u $url/recon/scans/subdomains/assets.txt >> $url/recon/scans/subdomains/final.txt
     rm $url/recon/scans/subdomains/assets.txt
 }
@@ -148,6 +143,7 @@ function pythonsubs(){
     echo "[+] Gathering subs with subby...."
     echo ""
     echo "[+] The subdomain list can be found in $url/recon/scans/subdomains/"
+    echo " "
     echo "========================================================"
     echo " "
     subby.py $url > $url/recon/scans/subdomains/subs.txt
@@ -185,20 +181,25 @@ function domainflyby() {
     echo "[+] the screenshots and related data can be found in $url/recon/scans/subdomains/aquatone...."
     echo " "
     echo "========================================================"
+    echo " "
     export AQUATONE_OUT_PATH="$url/recon/scans/aquatone"
     cat $url/recon/scans/httprobe/alivesubs.txt | aquatone
 }
 
 function vulnsubs() {
-   echo -e "${BLUE}[+] looking for potential subdomain takeovers....."
+   echo -e "${CYAN}========================================================"
+   echo " "
+   echo "[+] looking for potential subdomain takeovers....."
    echo " "
    echo "[+] the result of the same can be found in $url/recon/potential_sub_takeovers/result.txt...."
    echo " "
-   subjack -w $url/recon/scans/subdomains/final.txt -t 100 -timeout 30 -o $url/recon/potential_sub_takeovers/results.txt -ssl -a -v 
+   echo "========================================================"
+   echo " "
+   subjack -w $url/recon/scans/subdomains/final.txt -t 100 -timeout 30 -o $url/recon/potential_sub_takeovers/results.txt -ssl -a -v > $url/recon/potential_sub_takeovers/logs.txt
 }
 
 function firewalldetect(){
-    echo -e "${BLUE}========================================================"
+    echo -e "${CYAN}========================================================"
     echo ""
     echo "[+] detecting the web app firewall of $url...."
     echo " "
@@ -210,18 +211,25 @@ function firewalldetect(){
 }
 
 function portscan(){
+    echo -e "${CYAN}========================================================"
+    echo " "
     echo "[+] scanning for open ports usnig nmap...."
     echo " "
     echo "[+] The scan results can be found in $url/recon/nmap_scan_results/open_ports.txt...."
+    echo " "
+    echo "========================================================"
     echo " "
     nmap -iL $url/recon/scans/subdomains/subs.txt -T5 > $url/recon/nmap_scan_results/open_ports.txt
 }
 
 function webscan(){
+    echo -e "${CYAN}========================================================"
+    echo " "
     echo "[+] looking for vulnerability and interesting data usnig nuceli"
     echo " "
     echo "[+] the results can be found in $url/recon/nuceli/...."
     echo " "
+    echo "========================================================"
     nuclei -l $url/recon/scans/subdomains/subs.txt -t /home/user/Templates/custom_templates > $url/recon/nuclei/nuclei_logs.txt
 }
 #==========================
@@ -233,8 +241,8 @@ banner
 
 while getopts "hiwpa" OPTION; do
         case $OPTION in
-	    p)                     
-	    maindir
+	    p)                     #quickrecon- get to know your target and its assets
+			maindir
             recondir
             scandirs
             subdomaindir
@@ -245,7 +253,7 @@ while getopts "hiwpa" OPTION; do
             livesubprobe
             domainflyby
             exit 0 
-	    ;;
+			;;
 
             a) 
                 maindir
